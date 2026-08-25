@@ -16,7 +16,7 @@ Cakupan proyek ini meliputi:
 
 ### Persiapan
 
-Sumber data: Dataset Students' Performance (Jaya Jaya Institut / UCI Machine Learning Repository).
+Sumber data: [Students' Performance Dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance) (Jaya Jaya Institut / UCI Machine Learning Repository).
 
 Setup environment:
 ```bash
