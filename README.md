@@ -34,14 +34,24 @@ pip install -r requirements.txt
 ```
 
 ## Business Dashboard
-Jelaskan tentang business dashboard yang telah dibuat. Jika ada, sertakan juga link untuk mengakses dashboard tersebut.
+Business dashboard dibangun menggunakan Looker Studio untuk memonitor performa akademik, status finansial, serta risiko dropout mahasiswa Jaya Jaya Institut secara berkala. Dashboard menampilkan ringkasan metrik utama (total mahasiswa, total dropout, rata-rata nilai semester 1 & 2), distribusi status mahasiswa, pengaruh status pembayaran SPP dan beasiswa terhadap kelulusan, serta breakdown status mahasiswa per program studi dengan fitur filter interaktif.
+
+- Link Looker Studio: https://datastudio.google.com/reporting/288bb3b3-f264-45f9-bd47-488d91049a3a
+
+Screenshot dashboard dapat dilihat pada folder `b_igloo-dashboard/dashboard.png`.
 
 ## Menjalankan Sistem Machine Learning
-Jelaskan cara menjalankan protoype sistem machine learning yang telah dibuat. Selain itu, sertakan juga link untuk mengakses prototype tersebut.
+Prototype machine learning dibangun menggunakan Streamlit untuk memprediksi probabilitas dan status risiko dropout mahasiswa berdasarkan parameter demografi, finansial, dan performa akademik semester awal.
 
+Cara menjalankan prototype secara lokal:
+```bash
+# Menjalankan aplikasi streamlit
+streamlit run app.py
 ```
 
-```
+Prototype juga telah di-deploy dan dapat diakses secara daring melalui tautan berikut:
+- Link Streamlit Community Cloud: https://student-dropout-predictiongit-que8bzfh8m9fet8xl8k4ss.streamlit.app/
+- Link Repositori GitHub: https://github.com/Idoo0/student-dropout-prediction.git
 
 ## Conclusion
 Berdasarkan hasil analisis data dan pemodelan machine learning, faktor-faktor yang paling memengaruhi kemungkinan mahasiswa mengalami dropout adalah:
