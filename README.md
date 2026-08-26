@@ -13,16 +13,20 @@ Selama ini pihak institusi baru tahu seorang mahasiswa berisiko dropout setelah 
 ### Cakupan Proyek
 Proyek ini mencakup:
 - Eksplorasi data untuk melihat pola dan faktor yang berkaitan dengan dropout.
-- Membangun model machine learning untuk memprediksi risiko dropout mahasiswa.
+- Mempersiapkan data dengan memfilter status Dropout dan Graduate untuk pemodelan biner, serta memisahkan data Enrolled untuk prediksi di masa depan.
+- Membangun model machine learning untuk memprediksi potensi mahasiswa dropout atau graduate.
 - Membuat dashboard untuk memantau performa dan status mahasiswa.
 - Membuat prototype aplikasi (Streamlit) supaya model bisa langsung dipakai oleh staf institusi.
 - Menyusun rekomendasi tindakan untuk institusi berdasarkan hasil analisis.
 
 ### Persiapan
 
-Sumber data: [Students' Performance Dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance) (Jaya Jaya Institut / UCI Machine Learning Repository).
+Sumber data: [students_performance.csv](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance) (Jaya Jaya Institut / UCI Machine Learning Repository).
 
 Setup environment:
+- Versi Python yang digunakan: Python 3.12.x
+
+Cara setup environment dan install dependensi:
 ```bash
 python -m venv venv
 
@@ -39,10 +43,10 @@ Dashboard dibuat pakai Looker Studio, isinya untuk memantau performa akademik, s
 
 - Link Looker Studio: https://datastudio.google.com/reporting/288bb3b3-f264-45f9-bd47-488d91049a3a
 
-Screenshot dashboard ada di folder `b_igloo-dashboard/dashboard.png`.
+Screenshot dashboard disimpan di folder `b_igloo-dashboard/` dengan nama file `B_iGloO-dashboard.png`.
 
 ## Menjalankan Sistem Machine Learning
-Prototype dibuat pakai Streamlit, dipakai untuk memprediksi apakah seorang mahasiswa berisiko dropout atau tidak berdasarkan data demografi, finansial, dan nilai semester awal.
+Prototype dibuat pakai Streamlit, dipakai untuk memprediksi apakah seorang mahasiswa berpotensi Dropout atau Graduate berdasarkan data demografi, finansial, dan nilai semester awal.
 
 Cara jalanin secara lokal:
 ```bash
@@ -56,16 +60,16 @@ Sudah di-deploy juga dan bisa diakses online lewat link berikut:
 ## Conclusion
 Dari hasil EDA dan modeling, ada beberapa faktor yang kelihatan paling berpengaruh ke dropout mahasiswa.
 
-Yang paling kentara adalah faktor finansial. Mahasiswa yang menunggak SPP (tuition fees not up to date) punya tingkat dropout sampai 86.5%, jauh di atas mahasiswa yang pembayarannya lancar (24.7%). Status debtor juga cenderung berbanding lurus dengan dropout, sekitar 62%.
+Yang paling kentara adalah faktor finansial. Mahasiswa yang menunggak SPP (tuition fees not up to date) punya tingkat dropout sampai 94.0%, jauh di atas mahasiswa yang pembayarannya lancar (30.7%). Status debtor juga berbanding lurus dengan dropout, sekitar 75.5%.
 
-Performa akademik di semester 1 dan 2 juga jadi indikator kuat. Mahasiswa yang dropout rata-rata nilainya jauh lebih rendah dibanding yang lulus (sekitar 7.25 vs 12.64 di semester 1, dan 5.90 vs 12.70 di semester 2) — artinya kalau nilai semester awal sudah rendah, itu bisa jadi sinyal peringatan dini.
+Performa akademik di semester 1 dan 2 juga jadi indikator kuat. Mahasiswa yang dropout rata-rata nilainya jauh lebih rendah dibanding yang lulus (sekitar 7.26 vs 12.64 di semester 1, dan 5.90 vs 12.70 di semester 2), artinya kalau nilai semester awal sudah rendah, itu bisa jadi sinyal peringatan dini.
 
-Beasiswa juga kelihatan berpengaruh: mahasiswa penerima beasiswa dropout rate-nya cuma 12.2%, sedangkan yang tidak dapat beasiswa 38.7%.
+Beasiswa juga kelihatan berpengaruh: mahasiswa penerima beasiswa dropout rate-nya cuma 13.8%, sedangkan yang tidak dapat beasiswa 48.4%.
 
-Untuk modelnya sendiri dipilih Logistic Regression, akurasinya 88.6% dan F1-Score 80.5% di data uji — cukup layak dipakai untuk deteksi dini risiko dropout.
+Untuk modelnya sendiri dipilih Logistic Regression yang dilatih pada data biner (Dropout vs Graduate), akurasinya mencapai 94.2% dan F1-Score 92.6% di data uji, sangat layak dipakai untuk deteksi dini risiko dropout.
 
 ### Rekomendasi Action Items
 - Bangun sistem early warning yang menandai mahasiswa berisiko tinggi begitu nilai dan SKS lulus semester 1 sudah bisa dihitung, jangan tunggu sampai semester akhir.
 - Sediakan program pendampingan/remedial khusus untuk mahasiswa dengan nilai atau SKS lulus semester 1 di bawah ambang batas.
-- Untuk mahasiswa yang menunggak SPP, tawarkan opsi cicilan, kerja paruh waktu di kampus, atau beasiswa darurat sebelum mereka memutuskan berhenti — ini kelompok dengan risiko dropout paling tinggi.
+- Untuk mahasiswa yang menunggak SPP, tawarkan opsi cicilan, kerja paruh waktu di kampus, atau beasiswa darurat sebelum mereka memutuskan berhenti, karena ini kelompok dengan risiko dropout paling tinggi.
 - Pantau lebih rutin mahasiswa kelas malam dan yang usia masuknya lebih tua, karena kelompok ini juga menunjukkan risiko dropout yang relatif lebih besar dibanding rata-rata.

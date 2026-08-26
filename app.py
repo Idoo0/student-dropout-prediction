@@ -150,8 +150,8 @@ if st.button("Prediksi Status Mahasiswa"):
 
     st.subheader("Hasil Prediksi")
     if prediction == 1:
-        st.error(f"Prediksi: **BERISIKO DROPOUT** (Probabilitas Risiko: {probabilities[1]*100:.2f}%)")
-        st.write("Rekomendasi: Mahasiswa memerlukan perhatian khusus pada pembayaran SPP dan pendampingan akademik.")
+        st.error(f"Prediksi: **DROPOUT** (Probabilitas Risiko Dropout: {probabilities[1]*100:.2f}%)")
+        st.write("Rekomendasi: Mahasiswa berpotensi tinggi mengalami dropout. Perlu intervensi segera terkait pembayaran SPP dan pendampingan akademik intensif.")
     else:
-        st.success(f"Prediksi: **NON-DROPOUT / AMAN** (Probabilitas Lulus/Aktif: {probabilities[0]*100:.2f}%)")
-        st.write("Rekomendasi: Mahasiswa berada dalam jalur akademik dan finansial yang stabil.")
+        st.success(f"Prediksi: **GRADUATE** (Probabilitas Kelulusan: {probabilities[0]*100:.2f}%)")
+        st.write("Rekomendasi: Mahasiswa diprediksi berada pada jalur kelulusan yang baik (Graduate). Pertahankan capaian akademik dan status finansial.")
